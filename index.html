@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caderno de Campo: Lévi-Strauss</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-paper: #FBF8F1;
+            --text-main: #4A443A;
+            --ink-main: #2C3E50;
+            --ink-accent: #A23E2A;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-paper); color: var(--text-main); }
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; color: var(--ink-main); }
+        .nav-link { transition: color 0.3s, border-bottom-color 0.3s; border-bottom: 2px solid transparent; }
+        .nav-link:hover, .nav-link.active { color: var(--ink-accent); border-bottom-color: var(--ink-accent); }
+        .section-divider { border-bottom: 1px dashed #DCD6C8; margin: 3rem auto; width: 50%; }
+        .game-card.selected { transform: scale(1.05); border-color: var(--ink-accent); box-shadow: 0 0 10px rgba(162, 62, 42, 0.3); }
+        .alliance-clan { border: 2px dashed #DCD6C8; }
+        .alliance-person.selected { border: 2px solid var(--ink-accent); transform: scale(1.1); }
+        .mytheme { cursor: pointer; transition: background-color 0.2s; border-bottom: 1px dotted transparent; }
+        .mytheme:hover { background-color: #FDF2E9; }
+        .mytheme.found { background-color: #FADBD8; color: var(--ink-accent); font-weight: bold; }
+        .timeline-item::before { content: ''; position: absolute; left: -25px; top: 0; width: 10px; height: 10px; background: var(--ink-main); border-radius: 50%; border: 2px solid var(--bg-paper); }
+        .accordion-header { cursor: pointer; transition: background-color 0.2s; }
+        .accordion-header.active { background-color: #f3efe6; }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-opacity-80 backdrop-blur-sm sticky top-0 z-50 shadow-sm" style="background-color: var(--bg-paper);">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Caderno de Campo</h1>
+            <div class="hidden md:flex space-x-3 text-sm">
+                <a href="#intro" class="nav-link pb-1">Início</a>
+                <a href="#biography" class="nav-link pb-1">A Jornada</a>
+                <a href="#concepts" class="nav-link pb-1">As Grandes Ideias</a>
+                <a href="#game1" class="nav-link pb-1">Jogo: Estruturas</a>
+                <a href="#game2" class="nav-link pb-1">Jogo: Alianças</a>
+                <a href="#game3" class="nav-link pb-1">Jogo: Mitos</a>
+                <a href="#map" class="nav-link pb-1">Diário de Campo</a>
+                <a href="#reflection" class="nav-link pb-1">Reflexões</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <section id="intro" class="text-center min-h-[80vh] flex flex-col justify-center">
+            <h1 class="text-6xl md:text-8xl font-bold">Claude Lévi-Strauss</h1>
+            <p class="text-2xl mt-4 max-w-3xl mx-auto italic">"O sábio não é o homem que fornece as respostas certas, é o que faz as perguntas certas."</p>
+            <p class="mt-8 text-lg">Este caderno interativo é um convite para refazer os passos de um dos pensadores mais revolucionários do século XX. Vamos aprender a fazer as perguntas que ele fez e, talvez, enxergar o mundo através das suas lentes.</p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section id="biography" class="py-12">
+            <h2 class="text-5xl font-bold text-center mb-12">A Jornada de uma Vida</h2>
+            <div class="relative max-w-3xl mx-auto border-l-2 border-dashed border-gray-300 pl-8">
+                <div class="timeline-item mb-12">
+                    <h3 class="text-2xl font-bold" style="color: var(--ink-accent);">1908: O Início</h3>
+                    <p>Nasce em Bruxelas, filho de pais artistas. Cresce num ambiente culto e estuda Filosofia e Direito em Paris. A sua mente é treinada para a lógica e a abstração, mas o seu coração anseia por algo mais concreto.</p>
+                </div>
+                <div class="timeline-item mb-12">
+                    <h3 class="text-2xl font-bold" style="color: var(--ink-accent);">1935: A Virada no Brasil</h3>
+                    <p>Aos 26 anos, aceita um convite que mudaria a sua vida: lecionar na recém-fundada USP. O contacto com os povos Kadiwéu e Bororo lança-o de vez na Antropologia. Ele não queria apenas descrever costumes; queria entender a "música" por trás da letra, a lógica oculta.</p>
+                </div>
+                 <div class="timeline-item mb-12">
+                    <h3 class="text-2xl font-bold" style="color: var(--ink-accent);">1941: O Exílio e a Descoberta</h3>
+                    <p>Fugindo da guerra na Europa, exila-se em Nova Iorque. Lá, encontra o linguista Roman Jakobson. Foi a epifania: se a língua tem uma estrutura universal e inconsciente, por que a cultura não teria? Nasce a ideia da Antropologia Estrutural.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3 class="text-2xl font-bold" style="color: var(--ink-accent);">1949 em diante: A Obra</h3>
+                    <p>Publica "As Estruturas Elementares do Parentesco", revolucionando o tema. Seguem-se "Tristes Trópicos", "O Pensamento Selvagem" e a monumental série "Mitológicas". Lévi-Strauss não para de construir a sua obra, mostrando que a mente "selvagem" e a mente "civilizada" operam com a mesma lógica fundamental.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section id="concepts" class="py-12">
+            <h2 class="text-5xl font-bold text-center mb-12">As Grandes Ideias</h2>
+            <div class="space-y-12 max-w-4xl mx-auto">
+                <div>
+                    <h3 class="text-3xl font-bold mb-4" style="color: var(--ink-accent);">1. A Mente Estruturada: Oposições Binárias</h3>
+                    <p class="text-lg">A base de tudo. Lévi-Strauss percebeu que pensamos em contrastes. Não entendemos o "alto" sem o "baixo", o "dentro" sem o "fora". A cultura, para ele, é um gigantesco sistema que se constrói sobre pares de opostos (natureza/cultura, cru/cozido) e tenta mediar as tensões entre eles. É a "gramática" universal do pensamento.</p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold mb-4" style="color: var(--ink-accent);">2. A Regra que nos Faz Humanos: A Teoria da Aliança</h3>
+                    <p class="text-lg">Por que todas as sociedades proíbem o incesto? Para Lévi-Strauss, não é uma questão de moral ou biologia. É a regra fundamental que força os grupos a trocarem membros (mulheres, na sua análise original) e, assim, criarem alianças. A proibição do incesto é a passagem da natureza (consanguinidade) para a cultura (afinidade). É a troca que funda a sociedade.</p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold mb-4" style="color: var(--ink-accent);">3. A Lógica dos Mitos: Análise Estrutural</h3>
+                    <p class="text-lg">Mitos não são historinhas para crianças. São ferramentas filosóficas que os povos "sem escrita" usam para pensar sobre as contradições da vida (ex: vida vs. morte). Ele propôs que, para entendê-los, devíamos decompô-los nas suas unidades mínimas, os "mitemas", e ver como se relacionam. A mesma mensagem, a mesma estrutura, aparece em mitos de culturas que nunca se encontraram.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+        
+        <section id="game1" class="py-12 text-center">
+            <h2 class="text-5xl font-bold mb-4">Jogo 1: O Jogo das Estruturas</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg mb-8">Baseado na Teoria 1. Encontre os 3 grupos de 3 "artefatos" que se conectam pela mesma oposição binária oculta.</p>
+            <div id="solved-groups" class="mb-4 space-y-2 max-w-2xl mx-auto"></div>
+            <div id="game-grid" class="grid grid-cols-3 gap-4 max-w-2xl mx-auto"></div>
+            <p id="game-feedback" class="mt-4 h-6 font-semibold"></p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section id="game2" class="py-12 text-center">
+            <h2 class="text-5xl font-bold mb-4">Jogo 2: O Jogo das Alianças</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg mb-8">Baseado na Teoria 2. Você é o líder de um povo. Para garantir a paz, crie alianças casando membros do seu clã com os clãs vizinhos. Lembre-se: casar dentro do próprio clã é proibido (incesto)!</p>
+            <div class="flex flex-col md:flex-row justify-around items-start max-w-4xl mx-auto gap-8">
+                <div class="alliance-clan p-4 rounded-lg w-full md:w-1/2">
+                    <h3 id="clan-a-title" class="text-2xl font-bold mb-4 text-center"></h3>
+                    <div id="clan-a-people" class="space-y-2"></div>
+                </div>
+                <div class="alliance-clan p-4 rounded-lg w-full md:w-1/2">
+                    <h3 id="clan-b-title" class="text-2xl font-bold mb-4 text-center"></h3>
+                    <div id="clan-b-people" class="space-y-2"></div>
+                </div>
+            </div>
+             <p id="alliance-feedback" class="mt-8 h-6 font-semibold text-xl"></p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section id="game3" class="py-12 text-center">
+            <h2 class="text-5xl font-bold mb-4">Jogo 3: O Decodificador de Mitos</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg mb-8">Baseado na Teoria 3. Leia o mito abaixo e clique nas frases-chave (os mitemas) que acredita serem as unidades fundamentais da história. Encontre todas para revelar a estrutura oculta.</p>
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md text-left text-lg leading-relaxed">
+                <p id="myth-text"></p>
+            </div>
+            <div id="mitemas-found" class="mt-4"></div>
+            <p id="myth-feedback" class="mt-4 h-12 font-semibold text-xl hidden"></p>
+        </section>
+        
+        <div class="section-divider"></div>
+        
+        <section id="map" class="py-12">
+            <h2 class="text-5xl font-bold text-center mb-12">Diário de Campo</h2>
+            <div id="accordion-container" class="max-w-3xl mx-auto space-y-4">
+                <!-- Itens do Acordeão serão gerados pelo JS -->
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section id="reflection" class="py-12 text-center">
+            <h2 class="text-5xl font-bold">Reflexões Finais</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg mb-12">Lévi-Strauss deu-nos uma caixa de ferramentas. Como podemos usá-la para desmontar e entender a nossa própria cultura?</p>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
+                <div class="p-6 rounded-lg border bg-white shadow-sm">
+                    <h4 class="text-xl font-bold mb-2">Mito da "Guerra Cultural"</h4>
+                    <p>A polarização atual pode ser vista como um mito que tenta mediar a tensão entre a tradição e a modernidade? Quais são os "mitemas" dessa narrativa?</p>
+                </div>
+                <div class="p-6 rounded-lg border bg-white shadow-sm">
+                    <h4 class="text-xl font-bold mb-2">Natureza vs. Tecnologia</h4>
+                    <p>A nossa relação com a tecnologia (smartphones, IA) cria uma nova oposição binária? Como mediamos a tensão entre a nossa vida "natural" e a nossa vida "digital"?</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Jogo 1: Estruturas ---
+        const gameGrid = document.getElementById('game-grid'), solvedGroupsContainer = document.getElementById('solved-groups'), gameFeedback = document.getElementById('game-feedback');
+        const gameItems = [
+            { text: "Colheita de milho", group: 1 }, { text: "Uma lei escrita", group: 1 }, { text: "Um banquete cozido", group: 1 },
+            { text: "Um cemitério", group: 2 }, { text: "Um padre em oração", group: 2 }, { text: "O mercado da cidade", group: 2 },
+            { text: "A camisa do nosso time", group: 3 }, { text: "O sotaque da minha região", group: 3 }, { text: "Um turista perdido", group: 3 }
+        ].sort(() => Math.random() - 0.5);
+        const groupExplanations = { 1: { title: "NATUREZA vs. CULTURA" }, 2: { title: "SAGRADO vs. PROFANO" }, 3: { title: "NÓS vs. ELES" } };
+        let selectedCards = [], solvedCount = 0;
+        gameItems.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'game-card p-4 bg-white rounded-lg shadow-md h-24 flex items-center justify-center text-center cursor-pointer border-2 border-transparent';
+            card.textContent = item.text; card.dataset.group = item.group;
+            card.addEventListener('click', () => {
+                if(card.classList.contains('solved')) return;
+                card.classList.toggle('selected');
+                selectedCards = Array.from(gameGrid.querySelectorAll('.selected'));
+                if (selectedCards.length === 3) {
+                    const group = selectedCards[0].dataset.group;
+                    if (selectedCards.every(c => c.dataset.group === group)) {
+                        const div = document.createElement('div');
+                        div.className = `p-4 rounded-lg text-white shadow-md bg-green-600`;
+                        div.innerHTML = `<strong class="block">${groupExplanations[group].title}</strong> ${selectedCards.map(c=>c.textContent).join(', ')}.`;
+                        solvedGroupsContainer.appendChild(div);
+                        selectedCards.forEach(c => c.classList.replace('selected', 'solved'));
+                        solvedCount++;
+                        if(solvedCount === 3) gameFeedback.textContent = "Excelente! Você tem a mente de um estruturalista.";
+                    } else {
+                        gameFeedback.textContent = "Combinação incorreta. As estruturas não se alinham.";
+                        selectedCards.forEach(c => c.classList.add('shake'));
+                        setTimeout(() => { selectedCards.forEach(c => c.classList.remove('shake', 'selected')); gameFeedback.textContent = ""; }, 500);
+                    }
+                    selectedCards.forEach(c => c.classList.remove('selected'));
+                }
+            });
+            gameGrid.appendChild(card);
+        });
+
+        // --- Jogo 2: Alianças ---
+        const clanAContainer = document.getElementById('clan-a-people'), clanBContainer = document.getElementById('clan-b-people'), allianceFeedback = document.getElementById('alliance-feedback');
+        const clans = { A: { name: 'Clã do Sol', people: ['Lia', 'Ravi', 'Mara'] }, B: { name: 'Clã da Lua', people: ['Kael', 'Dara', 'Juno'] } };
+        let selectedPerson = null;
+        function renderClans() {
+            clanAContainer.innerHTML = ''; clanBContainer.innerHTML = '';
+            document.getElementById('clan-a-title').textContent = clans.A.name; document.getElementById('clan-b-title').textContent = clans.B.name;
+            clans.A.people.forEach(p => clanAContainer.appendChild(createPerson(p, 'A')));
+            clans.B.people.forEach(p => clanBContainer.appendChild(createPerson(p, 'B')));
+        }
+        function createPerson(name, clan) {
+            const el = document.createElement('div');
+            el.className = 'alliance-person p-3 bg-white rounded shadow-sm text-center cursor-pointer border-2 border-transparent';
+            el.textContent = name; el.dataset.name = name; el.dataset.clan = clan;
+            el.addEventListener('click', () => {
+                if (!selectedPerson) {
+                    selectedPerson = el;
+                    el.classList.add('selected');
+                } else {
+                    if (selectedPerson.dataset.clan === el.dataset.clan) {
+                        allianceFeedback.textContent = "Aliança inválida! A troca deve ser entre clãs diferentes.";
+                        allianceFeedback.style.color = 'red';
+                    } else {
+                        allianceFeedback.textContent = `Aliança formada! ${selectedPerson.dataset.name} e ${el.dataset.name} uniram os clãs!`;
+                        allianceFeedback.style.color = 'green';
+                        selectedPerson.remove(); el.remove();
+                    }
+                    setTimeout(() => allianceFeedback.textContent = '', 2000);
+                    selectedPerson.classList.remove('selected');
+                    selectedPerson = null;
+                }
+            });
+            return el;
+        }
+        renderClans();
+
+        // --- Jogo 3: Mitos ---
+        const mythTextEl = document.getElementById('myth-text'), mythFeedbackEl = document.getElementById('myth-feedback');
+        const myth = {
+            text: "No início, <span class='mytheme' data-id='1'>os humanos viviam na escuridão</span>, comendo apenas <span class='mytheme' data-id='2'>frutos crus</span>. Um herói corajoso <span class='mytheme' data-id='3'>roubou o fogo dos deuses</span> e o trouxe para a Terra. Com o fogo, os humanos puderam <span class='mytheme' data-id='4'>cozinhar os seus alimentos</span> e reunir-se em volta da fogueira, <span class='mytheme' data-id='5'>formando a primeira aldeia</span>.",
+            mitemas: 5,
+            explanation: "Estrutura Revelada: NATUREZA (escuridão, cru) vs. CULTURA (fogo, cozido, aldeia). O mito resolve a tensão entre o estado natural e o social, mostrando o fogo como o elemento mediador que permite a passagem de um para o outro."
+        };
+        mythTextEl.innerHTML = myth.text;
+        let mitemasFound = 0;
+        mythTextEl.querySelectorAll('.mytheme').forEach(el => {
+            el.addEventListener('click', () => {
+                if(!el.classList.contains('found')) {
+                    el.classList.add('found');
+                    mitemasFound++;
+                    if (mitemasFound === myth.mitemas) {
+                        mythFeedbackEl.textContent = myth.explanation;
+                        mythFeedbackEl.classList.remove('hidden');
+                    }
+                }
+            });
+        });
+
+        // --- Diário de Campo Expansível (Acordeão) ---
+        const accordionContainer = document.getElementById('accordion-container');
+        const expeditionData = [
+            { 
+                title: 'Kadiwéu (MS)', 
+                quote: '"O rosto é um campo de significação social..."', 
+                text: `<p>Aqui, Lévi-Strauss descobriu que as complexas pinturas faciais dos Kadiwéu não eram mera decoração.</p><p>Eram, na verdade, um código visual sofisticado. A assimetria dos desenhos e a sua aplicação no corpo serviam para expressar hierarquias, relações sociais e a passagem da natureza (o corpo nu) para a cultura (o corpo socialmente significado).</p>` 
+            },
+            { 
+                title: 'Bororo (MT)', 
+                quote: '"A aldeia era um diagrama vivo da estrutura social..."', 
+                text: `<p>A organização espacial da aldeia Bororo foi uma revelação. A forma circular, a posição de cada cabana e a casa dos homens ao centro não eram aleatórias.</p><p>Lévi-Strauss percebeu que a aldeia era um espelho perfeito da sua cosmologia e da sua complexa estrutura social. O espaço, para ele, tornou-se uma linguagem que se podia ler para entender a cultura.</p>`
+            },
+            { 
+                title: 'Nambikwara (RO/MT)', 
+                quote: '"A civilização não é tão complexa, nem o primitivismo tão simples..."', 
+                text: `<p>Em "Tristes Trópicos", ele narra as difíceis condições do seu encontro com os Nambikwara, um povo de organização social aparentemente muito simples.</p><p>No entanto, ao analisar as suas trocas e alianças, ele desvendou uma lógica subtil e complexa, provando que a racionalidade e o pensamento estruturado são universais, presentes em todas as culturas, independentemente da sua tecnologia.</p>`
+            }
+        ];
+
+        expeditionData.forEach(item => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'bg-white rounded-lg shadow-md border';
+            
+            const headerDiv = document.createElement('div');
+            headerDiv.className = 'accordion-header p-6 flex justify-between items-center';
+            headerDiv.innerHTML = `<h3 class="text-3xl font-bold">${item.title}</h3><span class="text-2xl font-light text-gray-400 transform transition-transform">+</span>`;
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'accordion-content px-6';
+            contentDiv.innerHTML = `
+                <div class="pb-6">
+                    <blockquote class="border-l-4 pl-4 italic text-gray-600 my-4">${item.quote}</blockquote>
+                    <div class="text-text-main space-y-3">${item.text}</div>
+                </div>
+            `;
+            
+            itemDiv.appendChild(headerDiv);
+            itemDiv.appendChild(contentDiv);
+            accordionContainer.appendChild(itemDiv);
+
+            headerDiv.addEventListener('click', () => {
+                const isActive = headerDiv.classList.contains('active');
+
+                // Fecha todos
+                accordionContainer.querySelectorAll('.accordion-header').forEach(h => {
+                    h.classList.remove('active');
+                    h.querySelector('span').style.transform = 'rotate(0deg)';
+                    h.nextElementSibling.style.maxHeight = '0px';
+                });
+
+                // Abre o clicado (se não estava ativo)
+                if (!isActive) {
+                    headerDiv.classList.add('active');
+                    headerDiv.querySelector('span').style.transform = 'rotate(45deg)';
+                    contentDiv.style.maxHeight = contentDiv.scrollHeight + 'px';
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
